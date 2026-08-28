@@ -1089,11 +1089,12 @@
         function renderCategoriasNav() {
             const dropdown = document.getElementById('nav-categories-dropdown');
             const selectProd = document.getElementById('prod-category');
-            dropdown.innerHTML = '<a onclick="filtrarCategoria(\'todas\')">Todas las Categorías</a>';
+            dropdown.innerHTML = '<a href="#" onclick="event.preventDefault(); navegarA(\'tienda\');">Todas las Categorías</a>';
             selectProd.innerHTML = '';
 
             categorias.forEach(cat => {
-                dropdown.innerHTML += `<a onclick="filtrarCategoria('${cat}')">${cat}</a>`;
+                const slug = cat.toLowerCase().replace(/ /g, '-');
+                dropdown.innerHTML += `<a href="#${slug}" onclick="event.preventDefault(); window.location.reload();">${cat}</a>`;
                 selectProd.innerHTML += `<option value="${cat}">${cat}</option>`;
             });
         }
