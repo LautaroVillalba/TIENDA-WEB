@@ -2,19 +2,13 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Tienda de Indumentaria Femenina</title>
 
-    <!-- Firebase SDK Configuration & Analytics -->
     <script type="module">
-      // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
 
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       const firebaseConfig = {
         apiKey: "AIzaSyCOItHMKMfFjO6wCbeBwfU1yz4ERlbBEhQ",
         authDomain: "tienda-web-ti-mondino.firebaseapp.com",
@@ -25,13 +19,11 @@
         measurementId: "G-16BQ75ESKD"
       };
 
-      // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
     </script>
 
     <style>
-        /* Estilos Generales y Paleta Nude / Moda Femenina */
         :root {
             --bg-color: #fdfbf7;
             --surface-color: #ffffff;
@@ -58,6 +50,7 @@
             background-color: var(--bg-color);
             line-height: 1.5;
             overflow-x: hidden;
+            width: 100%;
         }
 
         a {
@@ -65,7 +58,6 @@
             color: inherit;
         }
 
-        /* Banner de Notificación Superior */
         .top-bar {
             background-color: var(--text-color);
             color: #ffffff;
@@ -76,7 +68,6 @@
             text-transform: uppercase;
         }
 
-        /* Encabezado y Navegación */
         header {
             border-bottom: 1px solid var(--border-color);
             position: sticky;
@@ -125,7 +116,6 @@
             color: var(--rose-dark);
         }
 
-        /* Desplegable de Categorías */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -160,7 +150,6 @@
             display: block;
         }
 
-        /* Buscador Estético con Lupa y Autocompletado */
         .search-container {
             position: relative;
             display: flex;
@@ -241,7 +230,6 @@
             color: var(--rose-dark);
         }
 
-        /* Banner Hero / Slider Interactivo */
         .hero-slider {
             position: relative;
             width: 100%;
@@ -341,7 +329,6 @@
             background-color: var(--rose-dark);
         }
 
-        /* Grilla de Productos */
         .catalog {
             max-width: 1200px;
             margin: 60px auto;
@@ -374,6 +361,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease;
             opacity: 0;
             transform: translateY(30px);
+            cursor: pointer;
         }
 
         .product-card.visible {
@@ -485,7 +473,6 @@
             text-transform: uppercase;
         }
 
-        /* Sección de Páginas de Información */
         .info-page-section {
             max-width: 900px;
             margin: 60px auto;
@@ -520,7 +507,6 @@
             white-space: pre-wrap;
         }
 
-        /* Botones Flotantes de Redes y WhatsApp Inteligente */
         .floating-social-container {
             position: fixed;
             bottom: 20px;
@@ -567,7 +553,6 @@
             fill: #ffffff;
         }
 
-        /* Pie de página */
         footer {
             background-color: var(--rose-soft);
             border-top: 1px solid var(--border-color);
@@ -610,7 +595,6 @@
             color: var(--gray-text);
         }
 
-        /* Modales */
         .modal {
             display: none;
             position: fixed;
@@ -707,16 +691,135 @@
             padding: 10px 0;
             border-bottom: 1px solid var(--border-color);
         }
+
+        /* Estilo para sugerencias temporales en el carrito */
+        .cart-suggestions {
+            background: var(--rose-soft);
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 15px;
+            border: 1px dashed var(--rose-dark);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .sales-counter-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+
+        .sales-counter-table th, .sales-counter-table td {
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            text-align: left;
+        }
+
+        .sales-counter-table th {
+            background-color: var(--rose-soft);
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 12px 15px;
+                gap: 10px;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .search-container {
+                width: 100%;
+            }
+
+            .search-input {
+                width: 100%;
+            }
+
+            .search-input:focus {
+                width: 100%;
+            }
+
+            .user-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .hero-slider {
+                height: 320px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                letter-spacing: 2px;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .catalog {
+                margin: 30px auto;
+                padding: 0 15px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .product-image-container {
+                height: 200px;
+            }
+
+            .product-title {
+                font-size: 0.85rem;
+            }
+
+            .product-price {
+                font-size: 0.8rem;
+            }
+
+            .info-page-section {
+                margin: 30px 15px;
+                padding: 20px 15px;
+            }
+
+            .floating-social-container {
+                bottom: 15px;
+                right: 15px;
+                gap: 8px;
+            }
+
+            .floating-btn {
+                width: 45px;
+                height: 45px;
+            }
+
+            .floating-btn svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Bar de promociones -->
     <div class="top-bar" id="top-bar-text">
         3 Y 6 CUOTAS SIN INTERÉS | 10% OFF POR TRANSFERENCIA
     </div>
 
-    <!-- Encabezado -->
     <header>
         <div class="header-container">
             <div class="logo" id="site-logo" onclick="navegarA('tienda')">Qué Me Pongo</div>
@@ -724,15 +827,12 @@
                 <ul>
                     <li class="dropdown">
                         <a onclick="navegarA('tienda')">Tienda ▾</a>
-                        <div class="dropdown-content" id="nav-categories-dropdown">
-                            <!-- Categorías cargadas dinámicamente -->
-                        </div>
+                        <div class="dropdown-content" id="nav-categories-dropdown"></div>
                     </li>
                     <li><a onclick="navegarA('sale')">Sale</a></li>
                 </ul>
             </nav>
 
-            <!-- Lupa y Buscador con Sugerencias -->
             <div class="search-container">
                 <input type="text" class="search-input" id="search-input" placeholder="Buscar productos..." oninput="buscarSugerencias(this.value)" autocomplete="off">
                 <svg class="search-icon" viewBox="0 0 24 24">
@@ -748,12 +848,12 @@
         </div>
     </header>
 
-    <!-- Panel de Administración -->
     <section class="admin-panel" id="admin-panel">
         <h3>Modo Administrador</h3>
         <div class="admin-actions">
             <button class="btn" onclick="abrirModalProducto()">+ Agregar Producto</button>
             <button class="btn" onclick="abrirModalCategorias()">Gestionar Categorías</button>
+            <button class="btn" onclick="abrirModalContadorVentas()">Ver Contador de Ventas</button>
             <button class="btn" onclick="abrirModalConfigRedes()">Configurar Redes & WhatsApp</button>
             <button class="btn" onclick="editarBanner()">Cambiar Banner Actual</button>
             <button class="btn" onclick="editarTopBar()">Editar Barra Superior</button>
@@ -761,9 +861,7 @@
         </div>
     </section>
 
-    <!-- VISTA PRINCIPAL (TIENDA) -->
     <div id="view-home">
-        <!-- Banner Principal Slider / Hero -->
         <section class="hero-slider hero" id="hero-slider">
             <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200');">
                 <div class="slide-content">
@@ -785,45 +883,34 @@
             </div>
         </section>
 
-        <!-- Catálogo de Productos -->
         <main class="catalog">
             <h2 class="section-title" id="catalog-title">Nuestras Prendas</h2>
-            <div class="product-grid" id="product-grid">
-                <!-- Los productos se cargan dinámicamente con JS -->
-            </div>
+            <div class="product-grid" id="product-grid"></div>
         </main>
     </div>
 
-    <!-- VISTA SECUNDARIA DE INFORMACIÓN -->
     <div id="view-info-page" style="display: none;">
         <main class="info-page-section">
             <div class="info-page-header">
                 <h1 class="info-page-title" id="info-title">Título de la Página</h1>
                 <button class="btn" id="btn-edit-page" style="display: none;" onclick="abrirModalEditarPagina()">Editar Contenido</button>
             </div>
-            <div class="info-page-body" id="info-content">
-                Cargando información...
-            </div>
+            <div class="info-page-body" id="info-content">Cargando información...</div>
             <div style="margin-top: 30px;">
                 <button class="btn" onclick="navegarA('tienda')">&larr; Volver a la Tienda</button>
             </div>
         </main>
     </div>
 
-    <!-- Botones Flotantes Inteligentes -->
     <div class="floating-social-container">
-        <a id="btn-float-whatsapp" class="floating-btn whatsapp" target="_blank" title="WhatsApp Elite">
+        <a id="btn-float-whatsapp" class="floating-btn whatsapp" target="_blank" title="WhatsApp">
             <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
         </a>
         <a id="btn-float-instagram" class="floating-btn instagram" target="_blank" title="Instagram">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
-        <a id="btn-float-facebook" class="floating-btn facebook" target="_blank" title="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.592 0 9 1.583 9 4.615V8z"/></svg>
-        </a>
     </div>
 
-    <!-- Pie de Página -->
     <footer>
         <div class="footer-container">
             <div class="footer-column">
@@ -836,7 +923,7 @@
             </div>
             <div class="footer-column">
                 <h4>Formas de Pago</h4>
-                <ul id="payment-methods">
+                <ul>
                     <li>Mercado Pago</li>
                     <li>Tarjetas de Crédito / Débito</li>
                     <li>Transferencia Bancaria (10% OFF)</li>
@@ -850,35 +937,30 @@
                 </ul>
             </div>
         </div>
-        <div class="copyright">
-            &copy; 2026 Qué Me Pongo Indumentaria. Todos los derechos reservados.
-        </div>
+        <div class="copyright">&copy; 2026 Qué Me Pongo Indumentaria. Todos los derechos reservados.</div>
     </footer>
 
-    <!-- Modal de Login -->
     <div class="modal" id="modal-login">
         <div class="modal-content">
             <h3>Iniciar Sesión - Admin</h3>
             <div class="form-group">
                 <label>Usuario</label>
-                <input type="text" id="login-user" autocomplete="off" name="user_no_suggest">
+                <input type="text" id="login-user" autocomplete="off">
             </div>
             <div class="form-group">
                 <label>Contraseña</label>
-                <input type="password" id="login-pass" autocomplete="new-password" name="pass_no_suggest">
+                <input type="password" id="login-pass" autocomplete="new-password">
             </div>
             <button class="btn" style="width: 100%;" onclick="iniciarSesion()">Ingresar</button>
             <button class="btn-link" style="width: 100%; margin-top: 10px;" onclick="cerrarModal('modal-login')">Cancelar</button>
         </div>
     </div>
 
-    <!-- Modal Ver Carrito -->
     <div class="modal" id="modal-carrito">
         <div class="modal-content">
             <h3>Tu Carrito</h3>
-            <div id="cart-items-container">
-                <!-- Productos del carrito -->
-            </div>
+            <div id="cart-items-container"></div>
+            <div id="cart-suggestions-container"></div>
             <div style="margin-top: 20px; font-weight: bold; text-align: right;" id="cart-total">Total: $0</div>
             <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
                 <button class="btn" style="width: 100%;" onclick="finalizarCompraWhatsApp()">Finalizar Compra por WhatsApp</button>
@@ -887,7 +969,31 @@
         </div>
     </div>
 
-    <!-- Modal Cargar Producto -->
+    <div class="modal" id="modal-detalle-producto">
+        <div class="modal-content wide">
+            <h3 id="det-prod-title">Título de la Prenda</h3>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 200px;">
+                    <img id="det-prod-img" src="" style="width: 100%; height: 280px; object-fit: cover; border-radius: 4px;" alt="">
+                </div>
+                <div style="flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 10px;">
+                    <p id="det-prod-price" style="font-size: 1.2rem; font-weight: bold;"></p>
+                    <p id="det-prod-promo" style="color: var(--accent-color); font-size: 0.85rem;"></p>
+                    <div>
+                        <label style="font-size: 0.8rem; text-transform: uppercase; color: var(--gray-text);">Descripción:</label>
+                        <p id="det-prod-desc" style="font-size: 0.9rem; margin-top: 4px;"></p>
+                    </div>
+                    <div>
+                        <label style="font-size: 0.8rem; text-transform: uppercase; color: var(--gray-text);">Seleccionar Talle y Stock:</label>
+                        <select id="det-prod-talle" style="width: 100%; padding: 8px; margin-top: 5px; border: 1px solid var(--border-color); border-radius: 4px;"></select>
+                    </div>
+                    <button class="btn" style="width: 100%; margin-top: auto;" onclick="agregarAlCarritoDesdeDetalle()">Agregar al Carrito</button>
+                </div>
+            </div>
+            <button class="btn-link" style="width: 100%; margin-top: 15px;" onclick="cerrarModal('modal-detalle-producto')">Cerrar</button>
+        </div>
+    </div>
+
     <div class="modal" id="modal-producto">
         <div class="modal-content">
             <h3>Agregar Nuevo Producto</h3>
@@ -901,9 +1007,15 @@
             </div>
             <div class="form-group">
                 <label>Categoría</label>
-                <select id="prod-category">
-                    <!-- Dinámico -->
-                </select>
+                <select id="prod-category"></select>
+            </div>
+            <div class="form-group">
+                <label>Descripción / Detalles</label>
+                <textarea id="prod-desc" placeholder="Descripción detallada de la prenda..." rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Stock por Talles (Ej. S:5, M:10, L:2)</label>
+                <input type="text" id="prod-stock-talles" placeholder="S:5, M:8, L:3">
             </div>
             <div class="form-group">
                 <label>Promoción / Financiación</label>
@@ -914,7 +1026,7 @@
                 <input type="file" id="prod-img-file-1" accept="image/*" onchange="convertirImagen(event, 1)">
             </div>
             <div class="form-group">
-                <label>Imagen Secundaria (Hover / Detalle)</label>
+                <label>Imagen Secundaria (Hover)</label>
                 <input type="file" id="prod-img-file-2" accept="image/*" onchange="convertirImagen(event, 2)">
             </div>
             <button class="btn" style="width: 100%;" onclick="guardarProducto()">Publicar Producto</button>
@@ -922,7 +1034,6 @@
         </div>
     </div>
 
-    <!-- Modal Gestor de Categorías -->
     <div class="modal" id="modal-categorias">
         <div class="modal-content">
             <h3>Gestionar Categorías</h3>
@@ -932,561 +1043,636 @@
                 <button class="btn" style="margin-top: 5px; width: 100%;" onclick="agregarCategoria()">Agregar Categoría</button>
             </div>
             <hr style="margin: 15px 0;">
-            <h4>Categorías Existentes (Orden)</h4>
-            <div id="category-list-admin" style="margin-top: 10px;">
-                <!-- Lista editable de categorías -->
-            </div>
+            <h4>Categorías Existentes</h4>
+            <div id="category-list-admin" style="margin-top: 10px;"></div>
             <button class="btn-link" style="width: 100%; margin-top: 15px;" onclick="cerrarModal('modal-categorias')">Cerrar</button>
         </div>
     </div>
 
-    <!-- Modal Configuración de Redes y WhatsApp -->
-    <div class="modal" id="modal-config-redes">
-        <div class="modal-content">
-            <h3>Configurar Links y Números</h3>
-            <div class="form-group">
-                <label>Número WhatsApp (con código de país sin +)</label>
-                <input type="text" id="config-whatsapp" placeholder="543518000301">
+    <div class="modal" id="modal-contador-ventas">
+        <div class="modal-content wide">
+            <h3>Contador de Ventas</h3>
+            <div style="max-height: 300px; overflow-y: auto;">
+                <table class="sales-counter-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre de Cliente</th>
+                            <th>Fecha de Venta</th>
+                            <th>Monto Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sales-table-body">
+                        </tbody>
+                </table>
             </div>
-            <div class="form-group">
-                <label>Link Instagram</label>
-                <input type="text" id="config-instagram" placeholder="https://instagram.com/tu_perfil">
-            </div>
-            <div class="form-group">
-                <label>Link Facebook</label>
-                <input type="text" id="config-facebook" placeholder="https://facebook.com/tu_perfil">
-            </div>
-            <button class="btn" style="width: 100%;" onclick="guardarConfigRedes()">Guardar Cambios</button>
-            <button class="btn-link" style="width: 100%; margin-top: 10px;" onclick="cerrarModal('modal-config-redes')">Cancelar</button>
+            <button class="btn-link" style="width: 100%; margin-top: 15px;" onclick="cerrarModal('modal-contador-ventas')">Cerrar</button>
         </div>
     </div>
 
-    <!-- Modal Editar Páginas de Información -->
     <div class="modal" id="modal-editar-pagina">
         <div class="modal-content wide">
-            <h3 id="modal-edit-page-title">Editar Información de la Página</h3>
+            <h3>Editar Página de Información</h3>
             <div class="form-group">
-                <label>Título de la Sección</label>
+                <label>Título</label>
                 <input type="text" id="edit-page-title-input">
             </div>
             <div class="form-group">
-                <label>Contenido / Información para el cliente</label>
-                <textarea id="edit-page-content-input" rows="10" placeholder="Escribe aquí toda la información..."></textarea>
+                <label>Contenido</label>
+                <textarea id="edit-page-content-input" rows="8"></textarea>
             </div>
-            <button class="btn" style="width: 100%;" onclick="guardarContenidoPagina()">Guardar y Publicar Cambios</button>
+            <button class="btn" style="width: 100%;" onclick="guardarContenidoPagina()">Guardar Cambios</button>
             <button class="btn-link" style="width: 100%; margin-top: 10px;" onclick="cerrarModal('modal-editar-pagina')">Cancelar</button>
         </div>
     </div>
 
     <script>
-        // Carga de Categorías persistentes
-        let categorias = JSON.parse(localStorage.getItem('tienda_categorias')) || ['Partes de Arriba', 'Partes de Abajo', 'Accesorios'];
+        let base64Img1 = '';
+        let base64Img2 = '';
+        let paginaActualEditando = '';
+        let productoSeleccionadoActual = null;
+        let temporizadorSugerencias = null;
 
-        // Carga de Configuración de Contacto persistente
-        let configContacto = JSON.parse(localStorage.getItem('tienda_config_contacto')) || {
-            whatsapp: "543518000301",
-            instagram: "https://instagram.com",
-            facebook: "https://facebook.com"
-        };
+        let categorias = JSON.parse(localStorage.getItem('tienda_categorias')) || [
+            'Partes de Arriba',
+            'Partes de Abajo',
+            'Vestidos',
+            'Calzado & Accesorios'
+        ];
 
-        // Datos del catálogo
         let productos = JSON.parse(localStorage.getItem('tienda_productos')) || [
-            { 
-                id: 1, 
-                titulo: 'Blazer Gael', 
-                precio: 35800, 
-                categoria: 'Partes de Arriba', 
-                promo: '3 cuotas sin interés', 
-                imagen1: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=600', 
-                imagen2: 'https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?q=80&w=600' 
+            {
+                id: 1,
+                titulo: 'Top Sastrero Lino',
+                precio: 38900,
+                categoria: 'Partes de Arriba',
+                descripcion: 'Top sastrero confeccionado en lino liviano con botones nacarados. Ideal para combinar con sintonía formal o casual.',
+                stockTalles: { 'S': 3, 'M': 5, 'L': 2 },
+                promo: '3 cuotas sin interés',
+                img1: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=600',
+                img2: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600'
             },
-            { 
-                id: 2, 
-                titulo: 'Conjunto Aymara', 
-                precio: 52800, 
-                categoria: 'Partes de Arriba', 
-                promo: '10% OFF por Transferencia', 
-                imagen1: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600', 
-                imagen2: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=600' 
-            },
-            { 
-                id: 3, 
-                titulo: 'Pantalón Sastrero Dallas', 
-                precio: 27000, 
-                categoria: 'Partes de Abajo', 
-                promo: '3 cuotas sin interés', 
-                imagen1: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600', 
-                imagen2: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?q=80&w=600' 
+            {
+                id: 2,
+                titulo: 'Pantalón Wide Leg',
+                precio: 52000,
+                categoria: 'Partes de Abajo',
+                descripcion: 'Pantalón tiro alto corte wide leg con bolsillos laterales y presillas. Excelente caída y comodidad.',
+                stockTalles: { 'S': 2, 'M': 4, 'L': 1, 'XL': 2 },
+                promo: '10% OFF Transferencia',
+                img1: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=600',
+                img2: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=600'
             }
         ];
 
-        // Páginas de Información
+        let carrito = JSON.parse(localStorage.getItem('tienda_carrito')) || [];
+        let ventasRegistradas = JSON.parse(localStorage.getItem('tienda_ventas')) || [];
+
         let paginasInfo = JSON.parse(localStorage.getItem('tienda_paginas_info')) || {
             'como-comprar': {
                 titulo: 'Cómo Comprar',
-                contenido: "1. Explora nuestro catálogo y selecciona las prendas que más te gusten.\n2. Haz clic en 'Agregar al Carrito'.\n3. Una vez seleccionados tus productos, presiona el botón del Carrito para revisar tu pedido.\n4. Coordina el pago y el envío a través de WhatsApp o checkout bancario.\n5. ¡Recibe tu pedido en la puerta de tu casa!"
+                contenido: '1. Seleccioná la prenda que más te guste y elegí tu talle.\n2. Agregala al carrito y revisá tus productos.\n3. Hacé click en finalizar compra y te conectaremos directamente por WhatsApp para coordinar pago y envío.'
             },
             'preguntas-frecuentes': {
                 titulo: 'Preguntas Frecuentes',
-                contenido: "¿Hacen envíos a todo el país?\nSí, enviamos a todas las provincias de Argentina a través de correo postal y mensajería.\n\n¿Cuáles son las formas de pago?\nAceptamos Mercado Pago, Tarjetas de Crédito/Débito en 3 y 6 cuotas sin interés, y Transferencia Bancaria con un 10% de descuento extra.\n\n¿Puedo realizar cambios?\nSí, dispones de 30 días para realizar cambios de prendas en perfecto estado con etiqueta."
+                contenido: '• ¿Cuáles son los medios de pago? Aceptamos transferencias bancarias con 10% de descuento, tarjetas de crédito y débito a través de Mercado Pago.\n• ¿Hacen envíos? Sí, realizamos envíos a todo el país.'
             },
             'tabla-de-talles': {
                 titulo: 'Tabla de Talles',
-                contenido: "Talle S (1): Busto 85-90 cm | Cintura 65-70 cm | Cadera 90-95 cm\nTalle M (2): Busto 90-95 cm | Cintura 70-75 cm | Cadera 95-100 cm\nTalle L (3): Busto 95-100 cm | Cintura 75-80 cm | Cadera 100-105 cm\n\nSi tienes dudas con tu talle, escríbenos por WhatsApp con tus medidas y te asesoramos al instante."
+                contenido: '• Talle S: Busto 85-90 cm | Cintura 60-65 cm\n• Talle M: Busto 91-96 cm | Cintura 66-71 cm\n• Talle L: Busto 97-102 cm | Cintura 72-78 cm\n• Talle XL: Busto 103-108 cm | Cintura 79-85 cm'
+            },
+            'sale': {
+                titulo: 'Sección Sale / Outlet',
+                contenido: 'Encontrá descuentos imperdibles de temporadas anteriores en prendas seleccionadas con stock limitado.'
             }
         };
 
-        let esAdmin = false;
-        let carrito = JSON.parse(localStorage.getItem('tienda_carrito_items')) || [];
-        let imagenTemp1 = '';
-        let imagenTemp2 = '';
-        let slideActual = 0;
-        let paginaActualKey = '';
-        let modalActivoId = null;
+        let redesConfig = JSON.parse(localStorage.getItem('tienda_redes')) || {
+            whatsapp: '543518000301',
+            instagram: 'https://instagram.com',
+            facebook: 'https://facebook.com'
+        };
 
-        // Inicialización
+        let currentSlide = 0;
+        let slideInterval;
+
         function init() {
-            renderCategoriasNav();
-            renderProductos(productos);
-            iniciarSlider();
-            inicializarScrollObserver();
-            actualizarContactoUI();
+            renderizarCategoriasNav();
+            renderizarCatalogo('todas');
             actualizarContadorCarrito();
-
-            // Eventos global de teclado (ENTER / ESC)
-            window.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    if (modalActivoId) {
-                        cerrarModal(modalActivoId);
-                    }
-                } else if (e.key === 'Enter') {
-                    if (modalActivoId === 'modal-login') {
-                        iniciarSesion();
-                    } else if (modalActivoId === 'modal-producto') {
-                        guardarProducto();
-                    } else if (modalActivoId === 'modal-editar-pagina') {
-                        guardarContenidoPagina();
-                    } else if (modalActivoId === 'modal-config-redes') {
-                        guardarConfigRedes();
-                    }
-                }
-            });
-
-            // Ocultar sugerencias al hacer click afuera
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.search-container')) {
-                    document.getElementById('suggestions-box').style.display = 'none';
-                }
-            });
-
-            window.onhashchange = manejarRutaURL;
-            if (window.location.hash) {
-                manejarRutaURL();
-            }
+            actualizarRedesFlotantes();
+            iniciarSlider();
+            verificarSesionAdmin();
         }
 
-        // Renderizar menú de Categorías
-        function renderCategoriasNav() {
-            const dropdown = document.getElementById('nav-categories-dropdown');
-            const selectProd = document.getElementById('prod-category');
-            dropdown.innerHTML = '<a onclick="filtrarCategoria(\'todas\')">Todas las Categorías</a>';
-            selectProd.innerHTML = '';
+        function iniciarSlider() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            if (slides.length === 0) return;
+            slideInterval = setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }, 5000);
+        }
 
+        function irASlide(index) {
+            clearInterval(slideInterval);
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            iniciarSlider();
+        }
+
+        function renderizarCategoriasNav() {
+            const dropdown = document.getElementById('nav-categories-dropdown');
+            dropdown.innerHTML = `<a onclick="filtrarCategoria('todas')">Todas las prendas</a>`;
             categorias.forEach(cat => {
                 dropdown.innerHTML += `<a onclick="filtrarCategoria('${cat}')">${cat}</a>`;
-                selectProd.innerHTML += `<option value="${cat}">${cat}</option>`;
+            });
+
+            const selectProd = document.getElementById('prod-category');
+            if (selectProd) {
+                selectProd.innerHTML = '';
+                categorias.forEach(cat => {
+                    selectProd.innerHTML += `<option value="${cat}">${cat}</option>`;
+                });
+            }
+        }
+
+        function renderizarCatalogo(categoriaFiltro, busqueda = '') {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            
+            let filtrados = productos.filter(p => {
+                const matchCat = (categoriaFiltro === 'todas' || p.categoria === categoriaFiltro);
+                const matchBusq = p.titulo.toLowerCase().includes(busqueda.toLowerCase()) || p.descripcion.toLowerCase().includes(busqueda.toLowerCase());
+                return matchCat && matchBusq;
+            });
+
+            if (filtrados.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; padding: 40px; color: var(--gray-text);">No se encontraron prendas.</p>';
+                return;
+            }
+
+            filtrados.forEach((p, index) => {
+                let adminBtns = '';
+                if (sessionStorage.getItem('admin_logged') === 'true') {
+                    adminBtns = `<button class="btn-delete" onclick="event.stopPropagation(); eliminarProducto(${p.id})">Eliminar</button>`;
+                }
+
+                let img2Html = p.img2 ? `<img src="${p.img2}" class="product-img secondary" alt="">` : '';
+                
+                let card = document.createElement('div');
+                card.className = 'product-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.onclick = () => abrirDetalleProducto(p.id);
+
+                card.innerHTML = `
+                    <div class="product-image-container">
+                        ${p.promo ? `<span class="badge">${p.promo}</span>` : ''}
+                        <img src="${p.img1}" class="product-img primary" alt="">
+                        ${img2Html}
+                    </div>
+                    <div class="product-title">${p.titulo}</div>
+                    <div class="product-price">$${p.precio.toLocaleString()}</div>
+                    <button class="btn-card">Ver Detalle & Talles</button>
+                    ${adminBtns}
+                `;
+                grid.appendChild(card);
+                setTimeout(() => card.classList.add('visible'), 50);
             });
         }
 
-        // Actualizar UI con links de redes
-        function actualizarContactoUI() {
-            const cleanWsp = configContacto.whatsapp.replace(/[^0-9]/g, '');
-            const msgDefault = encodeURIComponent("Hola necesito mas información para hacer una compra!");
+        function abrirDetalleProducto(id) {
+            productoSeleccionadoActual = productos.find(p => p.id === id);
+            if (!productoSeleccionadoActual) return;
+
+            document.getElementById('det-prod-title').innerText = productoSeleccionadoActual.titulo;
+            document.getElementById('det-prod-img').src = productoSeleccionadoActual.img1;
+            document.getElementById('det-prod-price').innerText = `$${productoSeleccionadoActual.precio.toLocaleString()}`;
+            document.getElementById('det-prod-promo').innerText = productoSeleccionadoActual.promo || '';
+            document.getElementById('det-prod-desc').innerText = productoSeleccionadoActual.descripcion || 'Sin descripción disponible.';
+
+            const selectTalle = document.getElementById('det-prod-talle');
+            selectTalle.innerHTML = '';
             
-            document.getElementById('btn-float-whatsapp').href = `https://wa.me/${cleanWsp}?text=${msgDefault}`;
-            document.getElementById('btn-float-instagram').href = configContacto.instagram;
-            document.getElementById('btn-float-facebook').href = configContacto.facebook;
-            document.getElementById('footer-whatsapp-text').innerText = `+${cleanWsp}`;
+            if (productoSeleccionadoActual.stockTalles) {
+                for (let [talle, stock] of Object.entries(productoSeleccionadoActual.stockTalles)) {
+                    selectTalle.innerHTML += `<option value="${talle}">Talle ${talle} (Stock: ${stock} disponibles)</option>`;
+                }
+            }
+
+            abrirModal('modal-detalle-producto');
         }
 
-        // Navegación
-        function navegarA(vistaKey) {
-            window.location.hash = vistaKey === 'tienda' ? '' : vistaKey;
+        function agregarAlCarritoDesdeDetalle() {
+            if (!productoSeleccionadoActual) return;
+            const talleSeleccionado = document.getElementById('det-prod-talle').value;
+            if (!talleSeleccionado) {
+                alert('Selecciona un talle disponible.');
+                return;
+            }
+
+            if (productoSeleccionadoActual.stockTalles[talleSeleccionado] <= 0) {
+                alert('Lo sentimos, no hay stock disponible para este talle.');
+                return;
+            }
+
+            // Descontar stock temporalmente de la visualización/memoria
+            productoSeleccionadoActual.stockTalles[talleSeleccionado]--;
+            localStorage.setItem('tienda_productos', JSON.stringify(productos));
+
+            let itemExistente = carrito.find(item => item.id === productoSeleccionadoActual.id && item.talle === talleSeleccionado);
+            if (itemExistente) {
+                itemExistente.cantidad++;
+            } else {
+                carrito.push({
+                    id: productoSeleccionadoActual.id,
+                    titulo: productoSeleccionadoActual.titulo,
+                    precio: productoSeleccionadoActual.precio,
+                    talle: talleSeleccionado,
+                    cantidad: 1,
+                    img1: productoSeleccionadoActual.img1
+                });
+            }
+
+            localStorage.setItem('tienda_carrito', JSON.stringify(carrito));
+            actualizarContadorCarrito();
+            cerrarModal('modal-detalle-producto');
+            abrirCarrito();
+        }
+
+        function filtrarCategoria(cat) {
+            document.getElementById('view-home').style.display = 'block';
+            document.getElementById('view-info-page').style.display = 'none';
+            document.getElementById('catalog-title').innerText = cat === 'todas' ? 'Nuestras Prendas' : cat;
+            renderizarCatalogo(cat);
+            window.scrollTo({ top: 400, behavior: 'smooth' });
+        }
+
+        function buscarSugerencias(query) {
+            const box = document.getElementById('suggestions-box');
+            if (!query.trim()) {
+                box.style.display = 'none';
+                return;
+            }
+            let coincidencias = productos.filter(p => p.titulo.toLowerCase().includes(query.toLowerCase()));
+            if (coincidencias.length === 0) {
+                box.style.display = 'none';
+                return;
+            }
+            box.innerHTML = '';
+            coincidencias.forEach(p => {
+                let div = document.createElement('div');
+                div.className = 'suggestion-item';
+                div.innerText = `${p.titulo} - $${p.precio.toLocaleString()}`;
+                div.onclick = () => {
+                    box.style.display = 'none';
+                    document.getElementById('search-input').value = '';
+                    abrirDetalleProducto(p.id);
+                };
+                box.appendChild(div);
+            });
+            box.style.display = 'block';
+        }
+
+        function abrirCarrito() {
+            const container = document.getElementById('cart-items-container');
+            const totalContainer = document.getElementById('cart-total');
+            container.innerHTML = '';
             
-            if (vistaKey === 'tienda') {
-                document.getElementById('view-home').style.display = 'block';
-                document.getElementById('view-info-page').style.display = 'none';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (paginasInfo[vistaKey]) {
-                paginaActualKey = vistaKey;
+            if (carrito.length === 0) {
+                container.innerHTML = '<p style="color: var(--gray-text); text-align:center; padding:15px;">Tu carrito está vacío.</p>';
+                totalContainer.innerText = 'Total: $0';
+                document.getElementById('cart-suggestions-container').innerHTML = '';
+                abrirModal('modal-carrito');
+                return;
+            }
+
+            let total = 0;
+            carrito.forEach((item, index) => {
+                total += item.precio * item.cantidad;
+                let div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <img src="${item.img1}" style="width:45px; height:45px; object-fit:cover; border-radius:3px;" alt="">
+                        <div>
+                            <div style="font-size:0.9rem; font-weight:600;">${item.titulo}</div>
+                            <div style="font-size:0.8rem; color:var(--gray-text);">Talle: ${item.talle} | Cant: ${item.cantidad}</div>
+                        </div>
+                    </div>
+                    <div style="text-align:right;">
+                        <div style="font-size:0.9rem; font-weight:bold;">$${(item.precio * item.cantidad).toLocaleString()}</div>
+                        <button class="btn-link" style="color: #c94a4a; font-size:0.75rem;" onclick="eliminarDelCarrito(${index})">Eliminar</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+
+            totalContainer.innerText = `Total: $${total.toLocaleString()}`;
+            abrirModal('modal-carrito');
+
+            // --- SUGERENCIAS EN EL CARRITO POR 5 SEGUNDOS ---
+            mostrarSugerenciasTemporalesEnCarrito();
+        }
+
+        function mostrarSugerenciasTemporalesEnCarrito() {
+            const suggestionsContainer = document.getElementById('cart-suggestions-container');
+            if (productos.length === 0) return;
+
+            // Elegir un producto sugerido al azar o el primero que no esté en el carrito
+            let sugerido = productos[Math.floor(Math.random() * productos.length)];
+
+            suggestionsContainer.innerHTML = `
+                <div class="cart-suggestions">
+                    <div style="font-size:0.75rem; text-transform:uppercase; font-weight:bold; color:var(--rose-dark); margin-bottom: 5px;">⚡ ¡Sugerencia por tiempo limitado!</div>
+                    <div style="display:flex; align-items:center; justify-content:space-between;">
+                        <span style="font-size:0.85rem; font-weight:600;">${sugerido.titulo} ($${sugerido.precio.toLocaleString()})</span>
+                        <button class="btn" style="padding: 6px 12px; font-size: 0.7rem;" onclick="abrirDetalleProducto(${sugerido.id})">Ver</button>
+                    </div>
+                </div>
+            `;
+
+            if (temporizadorSugerencias) clearTimeout(temporizadorSugerencias);
+            temporizadorSugerencias = setTimeout(() => {
+                suggestionsContainer.innerHTML = '';
+            }, 5000);
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            localStorage.setItem('tienda_carrito', JSON.stringify(carrito));
+            actualizarContadorCarrito();
+            abrirCarrito();
+        }
+
+        function actualizarContadorCarrito() {
+            let count = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+            document.getElementById('cart-count').innerText = count;
+        }
+
+        function finalizarCompraWhatsApp() {
+            if (carrito.length === 0) return;
+            const clienteNombre = prompt('Por favor, ingresa tu Nombre y Apellido para registrar la venta:', 'Cliente Anónimo');
+            if (!clienteNombre) return;
+
+            let texto = `Hola! Quiero confirmar mi compra en Qué Me Pongo:%0A`;
+            let total = 0;
+            carrito.forEach(item => {
+                texto += `• ${item.cantidad}x ${item.titulo} (Talle: ${item.talle}) - $${(item.precio * item.cantidad).toLocaleString()}%0A`;
+                total += item.precio * item.cantidad;
+            });
+            texto += `%0ATotal a abonar: $${total.toLocaleString()}%0AMi nombre es: ${clienteNombre}`;
+
+            // Registrar venta en contador de administrador
+            const fechaHoy = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            ventasRegistradas.push({
+                nombreCliente: clienteNombre,
+                fecha: fechaHoy,
+                montoTotal: `$${total.toLocaleString()}`
+            });
+            localStorage.setItem('tienda_ventas', JSON.stringify(ventasRegistradas));
+
+            // Limpiar carrito
+            carrito = [];
+            localStorage.setItem('tienda_carrito', JSON.stringify(carrito));
+            actualizarContadorCarrito();
+            cerrarModal('modal-carrito');
+
+            window.open(`https://wa.me/${redesConfig.whatsapp}?text=${texto}`, '_blank');
+        }
+
+        function abrirModalContadorVentas() {
+            const tbody = document.getElementById('sales-table-body');
+            tbody.innerHTML = '';
+            if (ventasRegistradas.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:var(--gray-text);">No hay ventas registradas todavía.</td></tr>';
+            } else {
+                ventasRegistradas.forEach(v => {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${v.nombreCliente}</td>
+                            <td>${v.fecha}</td>
+                            <td style="font-weight:bold;">${v.montoTotal}</td>
+                        </tr>
+                    `;
+                });
+            }
+            abrirModal('modal-contador-ventas');
+        }
+
+        function navegarA(seccion) {
+            if (['como-comprar', 'preguntas-frecuentes', 'tabla-de-talles', 'sale'].includes(seccion)) {
                 document.getElementById('view-home').style.display = 'none';
                 document.getElementById('view-info-page').style.display = 'block';
-                
-                document.getElementById('info-title').innerText = paginasInfo[vistaKey].titulo;
-                document.getElementById('info-content').innerText = paginasInfo[vistaKey].contenido;
-                document.getElementById('btn-edit-page').style.display = esAdmin ? 'inline-block' : 'none';
+                const info = paginasInfo[seccion];
+                document.getElementById('info-title').innerText = info.titulo;
+                document.getElementById('info-content').innerText = info.contenido;
+                paginaActualEditando = seccion;
+
+                if (sessionStorage.getItem('admin_logged') === 'true') {
+                    document.getElementById('btn-edit-page').style.display = 'inline-block';
+                } else {
+                    document.getElementById('btn-edit-page').style.display = 'none';
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (seccion === 'tienda') {
+                document.getElementById('view-home').style.display = 'block';
+                document.getElementById('view-info-page').style.display = 'none';
+                renderizarCatalogo('todas');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
 
-        function manejarRutaURL() {
-            const hash = window.location.hash.replace('#', '');
-            if (hash && paginasInfo[hash]) {
-                navegarA(hash);
-            } else {
-                navegarA('tienda');
-            }
-        }
-
-        // Modales y Teclas
         function abrirModal(id) {
-            modalActivoId = id;
             document.getElementById(id).style.display = 'flex';
         }
 
         function cerrarModal(id) {
             document.getElementById(id).style.display = 'none';
-            if (modalActivoId === id) modalActivoId = null;
         }
 
-        function abrirModalLogin() { abrirModal('modal-login'); }
-        function abrirModalProducto() { abrirModal('modal-producto'); }
-        function abrirModalEditarPagina() {
-            if (!paginaActualKey || !paginasInfo[paginaActualKey]) return;
-            document.getElementById('edit-page-title-input').value = paginasInfo[paginaActualKey].titulo;
-            document.getElementById('edit-page-content-input').value = paginasInfo[paginaActualKey].contenido;
-            abrirModal('modal-editar-pagina');
+        function abrirModalLogin() {
+            if (sessionStorage.getItem('admin_logged') === 'true') {
+                cerrarSesion();
+            } else {
+                abrirModal('modal-login');
+            }
+        }
+
+        function iniciarSesion() {
+            const u = document.getElementById('login-user').value;
+            const p = document.getElementById('login-pass').value;
+            if (u === 'admin' && p === 'admin123') {
+                sessionStorage.setItem('admin_logged', 'true');
+                cerrarModal('modal-login');
+                verificarSesionAdmin();
+                renderizarCatalogo('todas');
+                alert('¡Sesión de Administrador iniciada con éxito!');
+            } else {
+                alert('Usuario o contraseña incorrectos.');
+            }
+        }
+
+        function cerrarSesion() {
+            sessionStorage.removeItem('admin_logged');
+            verificarSesionAdmin();
+            renderizarCatalogo('todas');
+            alert('Sesión cerrada.');
+        }
+
+        function verificarSesionAdmin() {
+            const panel = document.getElementById('admin-panel');
+            const btnLogin = document.getElementById('btn-login-modal');
+            if (sessionStorage.getItem('admin_logged') === 'true') {
+                panel.style.display = 'block';
+                btnLogin.innerText = 'Cerrar Sesión Admin';
+            } else {
+                panel.style.display = 'none';
+                btnLogin.innerText = 'Admin';
+            }
+        }
+
+        function convertirImagen(event, num) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                if (num === 1) base64Img1 = e.target.result;
+                if (num === 2) base64Img2 = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function abrirModalProducto() {
+            document.getElementById('prod-title').value = '';
+            document.getElementById('prod-price').value = '';
+            document.getElementById('prod-desc').value = '';
+            document.getElementById('prod-stock-talles').value = 'S:5, M:5, L:5';
+            document.getElementById('prod-promo').value = '';
+            document.getElementById('prod-img-file-1').value = '';
+            document.getElementById('prod-img-file-2').value = '';
+            base64Img1 = '';
+            base64Img2 = '';
+            abrirModal('modal-producto');
+        }
+
+        function guardarProducto() {
+            const titulo = document.getElementById('prod-title').value;
+            const precio = parseFloat(document.getElementById('prod-price').value);
+            const categoria = document.getElementById('prod-category').value;
+            const descripcion = document.getElementById('prod-desc').value;
+            const textoStock = document.getElementById('prod-stock-talles').value;
+            const promo = document.getElementById('prod-promo').value;
+
+            if (!titulo || isNaN(precio)) {
+                alert('Por favor complete al menos el título y el precio válido.');
+                return;
+            }
+
+            // Procesar stock de talles ingresado (ej: S:5, M:10, L:2)
+            let stockTallesObj = {};
+            if (textoStock) {
+                let partes = textoStock.split(',');
+                partes.forEach(par => {
+                    let sub = par.split(':');
+                    if (sub.length === 2) {
+                        let t = sub[0].trim().toUpperCase();
+                        let cant = parseInt(sub[1].trim()) || 0;
+                        stockTallesObj[t] = cant;
+                    }
+                });
+            } else {
+                stockTallesObj = { 'Único': 10 };
+            }
+
+            const nuevoProd = {
+                id: Date.now(),
+                titulo,
+                precio,
+                categoria,
+                descripcion,
+                stockTalles: stockTallesObj,
+                promo,
+                img1: base64Img1 || 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=600',
+                img2: base64Img2 || ''
+            };
+
+            productos.push(nuevoProd);
+            localStorage.setItem('tienda_productos', JSON.stringify(productos));
+            cerrarModal('modal-producto');
+            renderizarCatalogo('todas');
+            alert('¡Producto agregado correctamente con su stock!');
+        }
+
+        function eliminarProducto(id) {
+            if (confirm('¿Estás seguro de eliminar este producto?')) {
+                productos = productos.filter(p => p.id !== id);
+                localStorage.setItem('tienda_productos', JSON.stringify(productos));
+                renderizarCatalogo('todas');
+            }
         }
 
         function abrirModalCategorias() {
-            renderListadoCategoriasAdmin();
-            abrirModal('modal-categorias');
-        }
-
-        function abrirModalConfigRedes() {
-            document.getElementById('config-whatsapp').value = configContacto.whatsapp;
-            document.getElementById('config-instagram').value = configContacto.instagram;
-            document.getElementById('config-facebook').value = configContacto.facebook;
-            abrirModal('modal-config-redes');
-        }
-
-        // Gestión de Categorías
-        function renderListadoCategoriasAdmin() {
             const list = document.getElementById('category-list-admin');
             list.innerHTML = '';
             categorias.forEach((cat, index) => {
                 list.innerHTML += `
                     <div class="category-item">
                         <span>${cat}</span>
-                        <div>
-                            ${index > 0 ? `<button onclick="moverCategoria(${index}, -1)">▲</button>` : ''}
-                            ${index < categorias.length - 1 ? `<button onclick="moverCategoria(${index}, 1)">▼</button>` : ''}
-                            <button onclick="eliminarCategoria('${cat}')" style="color:red; margin-left:5px;">X</button>
-                        </div>
+                        <button class="btn-link" style="color:#c94a4a;" onclick="eliminarCategoria(${index})">Eliminar</button>
                     </div>
                 `;
             });
+            abrirModal('modal-categorias');
         }
 
         function agregarCategoria() {
-            const name = document.getElementById('new-cat-name').value.trim();
-            if (name && !categorias.includes(name)) {
-                categorias.push(name);
-                document.getElementById('new-cat-name').value = '';
-                guardarCategorias();
-            }
-        }
-
-        function eliminarCategoria(cat) {
-            categorias = categorias.filter(c => c !== cat);
-            guardarCategorias();
-        }
-
-        function moverCategoria(index, delta) {
-            const target = index + delta;
-            if (target >= 0 && target < categorias.length) {
-                const temp = categorias[index];
-                categorias[index] = categorias[target];
-                categorias[target] = temp;
-                guardarCategorias();
-            }
-        }
-
-        function guardarCategorias() {
-            localStorage.setItem('tienda_categorias', JSON.stringify(categorias));
-            renderCategoriasNav();
-            renderListadoCategoriasAdmin();
-        }
-
-        // Guardar Configuración de Redes
-        function guardarConfigRedes() {
-            configContacto.whatsapp = document.getElementById('config-whatsapp').value.trim();
-            configContacto.instagram = document.getElementById('config-instagram').value.trim();
-            configContacto.facebook = document.getElementById('config-facebook').value.trim();
-            localStorage.setItem('tienda_config_contacto', JSON.stringify(configContacto));
-            actualizarContactoUI();
-            cerrarModal('modal-config-redes');
-        }
-
-        // Renderizar Productos sin alertas interactivas molestas
-        function renderProductos(lista) {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = '';
-
-            lista.forEach(p => {
-                const img1 = p.imagen1 || 'https://via.placeholder.com/300x400?text=Sin+Imagen';
-                const img2 = p.imagen2 || img1;
-
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <div class="product-image-container">
-                        <span class="badge">${p.categoria}</span>
-                        <img class="product-img primary" src="${img1}" alt="${p.titulo}">
-                        <img class="product-img secondary" src="${img2}" alt="${p.titulo} Hover">
-                    </div>
-                    <div class="product-title">${p.titulo}</div>
-                    <div class="product-price">$ ${p.precio.toLocaleString()}</div>
-                    <div class="product-promo">${p.promo}</div>
-                    <button class="btn-card" onclick="agregarAlCarrito(${p.id})">Agregar al carrito</button>
-                    ${esAdmin ? `<button class="btn-delete" onclick="eliminarProducto(${p.id})">Eliminar (Sin Stock)</button>` : ''}
-                `;
-                grid.appendChild(card);
-            });
-
-            inicializarScrollObserver();
-        }
-
-        // Carrito de compras silencioso
-        function agregarAlCarrito(id) {
-            const prod = productos.find(p => p.id === id);
-            if (prod) {
-                carrito.push(prod);
-                localStorage.setItem('tienda_carrito_items', JSON.stringify(carrito));
-                actualizarContadorCarrito();
-            }
-        }
-
-        function actualizarContadorCarrito() {
-            document.getElementById('cart-count').innerText = carrito.length;
-        }
-
-        function abrirCarrito() {
-            const container = document.getElementById('cart-items-container');
-            container.innerHTML = '';
-            let total = 0;
-
-            if (carrito.length === 0) {
-                container.innerHTML = '<p>El carrito está vacío.</p>';
-            } else {
-                carrito.forEach((p, idx) => {
-                    total += p.precio;
-                    container.innerHTML += `
-                        <div class="cart-item">
-                            <div>
-                                <strong>${p.titulo}</strong><br>
-                                <small>$ ${p.precio.toLocaleString()}</small>
-                            </div>
-                            <button onclick="eliminarDelCarrito(${idx})" style="color:red; background:none; border:none; cursor:pointer;">Eliminar</button>
-                        </div>
-                    `;
-                });
-            }
-
-            document.getElementById('cart-total').innerText = `Total: $${total.toLocaleString()}`;
-            abrirModal('modal-carrito');
-        }
-
-        function eliminarDelCarrito(index) {
-            carrito.splice(index, 1);
-            localStorage.setItem('tienda_carrito_items', JSON.stringify(carrito));
-            actualizarContadorCarrito();
-            abrirCarrito();
-        }
-
-        function finalizarCompraWhatsApp() {
-            if (carrito.length === 0) return;
-            const cleanWsp = configContacto.whatsapp.replace(/[^0-9]/g, '');
-            let listaTexto = carrito.map(i => `- ${i.titulo} ($${i.precio})`).join('\n');
-            let total = carrito.reduce((acc, curr) => acc + curr.precio, 0);
-            let mensaje = encodeURIComponent(`Hola! Quisiera efectuar la compra de los siguientes productos:\n\n${listaTexto}\n\nTotal: $${total}`);
-            window.open(`https://wa.me/${cleanWsp}?text=${mensaje}`, '_blank');
-        }
-
-        // Buscador y Sugerencias
-        function buscarSugerencias(val) {
-            const box = document.getElementById('suggestions-box');
-            if (!val.trim()) {
-                box.style.display = 'none';
-                renderProductos(productos);
+            const nombre = document.getElementById('new-cat-name').value.trim();
+            if (!nombre) return;
+            if (categorias.includes(nombre)) {
+                alert('La categoría ya existe.');
                 return;
             }
-
-            const query = val.toLowerCase();
-            const coincidencia = productos.filter(p => p.titulo.toLowerCase().includes(query) || p.categoria.toLowerCase().includes(query));
-
-            box.innerHTML = '';
-            if (coincidencia.length > 0) {
-                box.style.display = 'block';
-                coincidencia.forEach(p => {
-                    const item = document.createElement('div');
-                    item.className = 'suggestion-item';
-                    item.innerText = `${p.titulo} - $${p.precio}`;
-                    item.onclick = function() {
-                        renderProductos([p]);
-                        box.style.display = 'none';
-                        document.getElementById('search-input').value = p.titulo;
-                    };
-                    box.appendChild(item);
-                });
-            } else {
-                box.style.display = 'none';
-            }
-            renderProductos(coincidencia);
+            categorias.push(nombre);
+            localStorage.setItem('tienda_categorias', JSON.stringify(categorias));
+            document.getElementById('new-cat-name').value = '';
+            renderizarCategoriasNav();
+            abrirModalCategorias();
         }
 
-        // Filtrado por Categorías con Recarga de Selección
-        function filtrarCategoria(cat) {
-            navegarA('tienda');
-            if (cat === 'todas') {
-                document.getElementById('catalog-title').innerText = 'Nuestras Prendas';
-                renderProductos(productos);
-            } else {
-                document.getElementById('catalog-title').innerText = cat;
-                const filtrados = productos.filter(p => p.categoria.toLowerCase() === cat.toLowerCase());
-                renderProductos(filtrados);
+        function eliminarCategoria(index) {
+            categorias.splice(index, 1);
+            localStorage.setItem('tienda_categorias', JSON.stringify(categorias));
+            renderizarCategoriasNav();
+            abrirModalCategorias();
+        }
+
+        function abrirModalConfigRedes() {
+            const w = prompt('Número de WhatsApp con código de país (Ej: 543518000301):', redesConfig.whatsapp);
+            if (w) {
+                redesConfig.whatsapp = w;
+                localStorage.setItem('tienda_redes', JSON.stringify(redesConfig));
+                actualizarRedesFlotantes();
+                alert('WhatsApp actualizado.');
             }
         }
 
-        // Autenticación Admin
-        function iniciarSesion() {
-            const user = document.getElementById('login-user').value;
-            const pass = document.getElementById('login-pass').value;
-
-            if (user === 'TIMONDINO' && pass === '44694477') {
-                esAdmin = true;
-                document.getElementById('admin-panel').style.display = 'block';
-                document.getElementById('btn-login-modal').style.display = 'none';
-                if (document.getElementById('btn-edit-page')) {
-                    document.getElementById('btn-edit-page').style.display = 'inline-block';
-                }
-                cerrarModal('modal-login');
-                renderProductos(productos);
-            }
-        }
-
-        function cerrarSesion() {
-            esAdmin = false;
-            document.getElementById('admin-panel').style.display = 'none';
-            document.getElementById('btn-login-modal').style.display = 'block';
-            if (document.getElementById('btn-edit-page')) {
-                document.getElementById('btn-edit-page').style.display = 'none';
-            }
-            renderProductos(productos);
-        }
-
-        // Guardar Páginas de Info
-        function guardarContenidoPagina() {
-            const nuevoTitulo = document.getElementById('edit-page-title-input').value;
-            const nuevoContenido = document.getElementById('edit-page-content-input').value;
-
-            if (!nuevoTitulo) return;
-
-            paginasInfo[paginaActualKey].titulo = nuevoTitulo;
-            paginasInfo[paginaActualKey].contenido = nuevoContenido;
-
-            localStorage.setItem('tienda_paginas_info', JSON.stringify(paginasInfo));
-
-            document.getElementById('info-title').innerText = nuevoTitulo;
-            document.getElementById('info-content').innerText = nuevoContenido;
-
-            cerrarModal('modal-editar-pagina');
-        }
-
-        // Slider del Banner Principal
-        function iniciarSlider() {
-            setInterval(() => {
-                slideActual = (slideActual + 1) % 2;
-                irASlide(slideActual);
-            }, 5000);
-        }
-
-        function irASlide(index) {
-            slideActual = index;
-            const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.dot');
-            
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
-
-        function inicializarScrollObserver() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.product-card').forEach(card => {
-                observer.observe(card);
-            });
-        }
-
-        // Convertir Imagen a Base64
-        function convertirImagen(event, num) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                if (num === 1) imagenTemp1 = reader.result;
-                if (num === 2) imagenTemp2 = reader.result;
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        }
-
-        // Guardar Producto
-        function guardarProducto() {
-            const titulo = document.getElementById('prod-title').value;
-            const precio = parseFloat(document.getElementById('prod-price').value);
-            const categoria = document.getElementById('prod-category').value;
-            const promo = document.getElementById('prod-promo').value;
-
-            if (!titulo || isNaN(precio)) return;
-
-            const nuevo = {
-                id: Date.now(),
-                titulo,
-                precio,
-                categoria,
-                promo: promo || 'Sin promoción',
-                imagen1: imagenTemp1,
-                imagen2: imagenTemp2 || imagenTemp1
-            };
-
-            productos.push(nuevo);
-            localStorage.setItem('tienda_productos', JSON.stringify(productos));
-            renderProductos(productos);
-            cerrarModal('modal-producto');
-
-            document.getElementById('prod-title').value = '';
-            document.getElementById('prod-price').value = '';
-            imagenTemp1 = '';
-            imagenTemp2 = '';
-        }
-
-        // Eliminar Producto
-        function eliminarProducto(id) {
-            productos = productos.filter(p => p.id !== id);
-            localStorage.setItem('tienda_productos', JSON.stringify(productos));
-            renderProductos(productos);
+        function actualizarRedesFlotantes() {
+            document.getElementById('btn-float-whatsapp').href = `https://wa.me/${redesConfig.whatsapp}`;
+            document.getElementById('btn-float-instagram').href = redesConfig.instagram;
+            document.getElementById('footer-whatsapp-text').innerText = `+${redesConfig.whatsapp}`;
         }
 
         function editarBanner() {
-            const t1 = prompt('Nuevo título para Slide 1:', document.getElementById('hero-title-1').innerText);
+            const t1 = prompt('Nuevo título principal para Banner:', document.getElementById('hero-title-1').innerText);
             if (t1) document.getElementById('hero-title-1').innerText = t1;
         }
 
@@ -1495,7 +1681,26 @@
             if (texto) document.getElementById('top-bar-text').innerText = texto;
         }
 
+        function abrirModalEditarPagina() {
+            if (!paginaActualEditando) return;
+            document.getElementById('edit-page-title-input').value = paginasInfo[paginaActualEditando].titulo;
+            document.getElementById('edit-page-content-input').value = paginasInfo[paginaActualEditando].contenido;
+            abrirModal('modal-editar-pagina');
+        }
+
+        function guardarContenidoPagina() {
+            if (!paginaActualEditando) return;
+            const t = document.getElementById('edit-page-title-input').value;
+            const c = document.getElementById('edit-page-content-input').value;
+
+            paginasInfo[paginaActualEditando] = { titulo: t, contenido: c };
+            localStorage.setItem('tienda_paginas_info', JSON.stringify(paginasInfo));
+            document.getElementById('info-title').innerText = t;
+            document.getElementById('info-content').innerText = c;
+            cerrarModal('modal-editar-pagina');
+        }
+
         window.onload = init;
     </script>
 </body>
-</html>
+</html> 
