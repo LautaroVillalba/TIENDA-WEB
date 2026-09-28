@@ -866,20 +866,18 @@
       actualizarDashboard();
     }
 
-    // --- ESCUCHADORES FIREBASE EN TIEMPO REAL ---
+    // --- ESCUCHADORES FIREBASE EN TIEMPO REAL CORREGIDOS ---
     if (db) {
       db.collection("ventas").onSnapshot((snapshot) => {
         if (!snapshot.empty) {
           const datosNube = [];
           snapshot.forEach((doc) => datosNube.push({ ...doc.data(), idDoc: doc.id }));
           datos = datosNube;
-        } else {
-          datos = [];
+          ordenarVentas();
+          guardarLocal();
+          poblarSelectorMeses();
+          actualizarDashboard();
         }
-        ordenarVentas();
-        guardarLocal();
-        poblarSelectorMeses();
-        actualizarDashboard();
       });
 
       db.collection("gastos").onSnapshot((snapshot) => {
@@ -887,14 +885,12 @@
           const gastosNube = [];
           snapshot.forEach((doc) => gastosNube.push({ idDoc: doc.id, ...doc.data() }));
           gastos = gastosNube;
-        } else {
-          gastos = [];
+          ordenarGastos();
+          guardarLocal();
+          poblarSelectorMeses();
+          actualizarDashboard();
+          if (filtroActual === 'gastos') renderizarVistaGastos();
         }
-        ordenarGastos();
-        guardarLocal();
-        poblarSelectorMeses();
-        actualizarDashboard();
-        if (filtroActual === 'gastos') renderizarVistaGastos();
       });
 
       db.collection("stock").onSnapshot((snapshot) => {
@@ -902,11 +898,9 @@
           const stockNube = [];
           snapshot.forEach((doc) => stockNube.push({ idDoc: doc.id, ...doc.data() }));
           stockList = stockNube;
-        } else {
-          stockList = [];
+          guardarLocal();
+          if (filtroActual === 'stock') renderizarVistaStock();
         }
-        guardarLocal();
-        if (filtroActual === 'stock') renderizarVistaStock();
       });
 
       db.collection("faltantes").onSnapshot((snapshot) => {
@@ -914,11 +908,9 @@
           const faltantesNube = [];
           snapshot.forEach((doc) => faltantesNube.push({ ...doc.data(), idDoc: doc.id }));
           faltantes = faltantesNube;
-        } else {
-          faltantes = [];
+          guardarLocal();
+          if (filtroActual === 'faltantes') renderizarVistaFaltantes();
         }
-        guardarLocal();
-        if (filtroActual === 'faltantes') renderizarVistaFaltantes();
       });
     }
 
@@ -1827,4 +1819,5 @@
   </script>
 </body>
 </html>
+
 
